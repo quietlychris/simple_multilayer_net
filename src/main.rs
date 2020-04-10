@@ -9,9 +9,9 @@ use nd::prelude::*;
 fn main() {
     let x: Array2<f32> = array![[1., 2., 3., 4.], [4., 3., 2., 1.], [1., 2., 2.5, 4.]];
     let (n, m) = (x.shape()[0], x.shape()[1]);
-    let output: Array2<f32> = array![[1.], [0.], [1.]];
+    let output: Array2<f32> = array![[1.0,0.0], [0.,1.0], [1.0,0.0]];
     let mut w1: Array2<f32> = array![[0.7, 0.28], [0.32, 0.35], [0.95, 0.05], [0.78, 0.83]];
-    let mut w2: Array2<f32> = array![[0.63], [0.59]];
+    let mut w2: Array2<f32> = array![[0.63, 0.43], [0.59,0.33]];
     println!("w1:\n{:#?}", w1);
     println!("w2:\n{:#?}", w2);
 
@@ -55,7 +55,7 @@ fn main() {
     let z3 = a2.dot(&w2);
     //println!("z3 start:\n{:#?}",z3);
     let a3 = z3.mapv(|x| sigmoid(x));
-    let test_output: Array2<f32> = array![[0.], [1.]];
+    let test_output: Array2<f32> = array![[0.0,1.0], [1.0,0.0]];
     println!("The result should be close to the presumed output of {:#?}",test_output);
     println!("result: {:#?}", a3);
 }
