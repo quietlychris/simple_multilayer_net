@@ -39,7 +39,7 @@ fn main() {
         let delta_w1 = a1.t().dot(&delta2);
         w1 = w1 - delta_w1;
 
-        let delta1 = delta2.dot(&w1.t()) * z2.clone().mapv(|x| sigmoid_prime(x));
+        let delta1 = delta2.dot(&w1.t()) * z1.clone().mapv(|x| sigmoid_prime(x));
         let delta_w0 = a0.t().dot(&delta1);
         w0 = w0 - delta_w0;
     }
